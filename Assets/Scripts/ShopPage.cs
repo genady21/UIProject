@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class ShopPage : Page
 {
-    [SerializeField] private Text _currency;
+  
     public override void Show()
     {
         base.Show();
         Debug.Log("Open ShopPage");
-        _currency.text = "20";
+        
 
     }
 
@@ -20,8 +20,5 @@ public class ShopPage : Page
         Debug.Log("Close ShopPage");
     }
 
-    public void Buy()
-    {
-        _currency.text = "0";
-    }
+  
 }

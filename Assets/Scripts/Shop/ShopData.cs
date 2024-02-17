@@ -7,15 +7,17 @@ using UnityEngine;
 [Serializable] public class ShopData
 {
   [SerializeField] private int _ID;
-  [SerializeField] private string _nameLot;
 
+  public int ID => _ID;
+
+  [SerializeField] private string _nameLot;
   public string NameLot
   {
     get { return _nameLot; }
   }
   
-  [SerializeField] private int _price;
   
+  [SerializeField] private int _price;
   public int Price
   {
     get { return _price; }

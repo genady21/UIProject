@@ -18,10 +18,10 @@ public class ShopLot : MonoBehaviour, ILoot
     [SerializeField] private Button _buttonBuy;
   
     
-    public void Init(ShopData lot, ShopManager shopManager, bool isCompletePurchase)
+    public void Init(string name , int price, int id, ShopManager shopManager, bool isCompletePurchase)
     {
         _shopManager = shopManager;
-        _name  = lot.NameLot;
+        _name = name;
         
         if (isCompletePurchase)
         {
@@ -29,11 +29,10 @@ public class ShopLot : MonoBehaviour, ILoot
         }
         else
         {
-            _price = lot.Price;
+            _price = price;
             _price1.text = _price.ToString();
         }
-        
-        _id = lot.ID;
+        _id = id;
         _name1.text = _name;
     }
 
@@ -41,7 +40,7 @@ public class ShopLot : MonoBehaviour, ILoot
 
     public void Buy()
     {
-        bool isCompleteBuy = _shopManager.TrySpend(_price, _id);
+        bool isCompleteBuy = _shopManager.TrySpend(_price,  _id);
         if (isCompleteBuy)
         {
             CompletBuy();

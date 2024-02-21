@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 [Serializable]
 public class SaveData
@@ -30,8 +31,13 @@ public class ShopManager : MonoBehaviour
   [SerializeField] private Transform _content;
   [SerializeField] public TextMeshProUGUI _noMoney;
   
-  [SerializeField] private List<ShopData> _lots;
-
+  
+  private string[]  _names = new string[18]{"Weapon","Bow","Claw","Dagger","Sceptre","Axe","Wand","Body_Armour","Boots","Gloves","Helmet","Shield","Quiver","Amulet","Belt","Ring","Trinket","Jewel"};
+  private string[]  _subNames = new string[18]{"Any","Base","Rune","Bronze","Silver","Golden","Abyss","Iron","Magic","Simple","Diamond","Rare","Unique","Normal","Distorted","Desecrated","Corrupted","Vaal"};
+  
+  private List<String> _nameItems;
+  private int _maxItems = 50;
+  
   private SaveData _save;
   
   private void Awake()
@@ -55,10 +61,10 @@ public class ShopManager : MonoBehaviour
   {
       _currentMoneyText.text = _currentMoney.ToString();
       
-      for (int i = 0; i < _lots.Count; i++)
+      for (int i = 0; i < _maxItems; i++)
       {
           bool isPurchaseCompete;
-          if (_save.PurchasedCompleted.Contains(_lots[i].ID))
+          if (_save.PurchasedCompleted.Contains(i))
           {
               isPurchaseCompete = true;
           }
@@ -67,8 +73,11 @@ public class ShopManager : MonoBehaviour
               isPurchaseCompete = false;
           }
           
+          string fullName = _names[Random.Range(0, _names.Length)] + " " + _subNames[Random.Range(0, _subNames.Length)];
+          int price = Random.Range(1, 15);
           ShopLot newPrefInstance = Instantiate(_pref, _content);
-          newPrefInstance.Init(_lots[i],this, isPurchaseCompete);
+          
+          newPrefInstance.Init(fullName,price,i++,this, isPurchaseCompete);
       }
   }
 

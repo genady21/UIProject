@@ -36,7 +36,7 @@ public class ShopManager : MonoBehaviour
   private string[]  _subNames = new string[18]{"Any","Base","Rune","Bronze","Silver","Golden","Abyss","Iron","Magic","Simple","Diamond","Rare","Unique","Normal","Distorted","Desecrated","Corrupted","Vaal"};
   
   private List<String> _nameItems;
-  private int _maxItems = 50;
+  private int _maxItems = 200;
   
   private SaveData _save;
   

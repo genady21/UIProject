@@ -15,14 +15,13 @@ public class PlayerMove : MonoBehaviour
 
     private CapsuleCollider _col;
     
-    
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _col = GetComponent<CapsuleCollider>();
         _rb.useGravity = true;
+        
     }
-
     private void Update()
     {
         vInput = Input.GetAxis("Vertical") * moveSpeed;

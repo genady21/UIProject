@@ -10,7 +10,7 @@ public class CameraBehavior : MonoBehaviour
 
     private void Start()
     {
-        target = GameObject.Find("Player").transform;
+        target = GameObject.Find("X Bot (1)").transform;
     }
 
     private void LateUpdate()
